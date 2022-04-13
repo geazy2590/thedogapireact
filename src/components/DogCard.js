@@ -1,18 +1,21 @@
 import React from 'react';
 import { Accordion, Card, Col, Container, Row } from 'react-bootstrap'
+import Favourites from './Favourites';
 
 const DogCard = ({ doggos }) => {
-  console.log(doggos);
 
   return (
     <Container className='justify-content-md-center'>
       <Row>
       {doggos.map((doggo) => (
-        <Col md={4} sm={6} xs={12}>
-          <Card key = { doggo.id }>
+        <Col md={4} sm={6} xs={12} key = { doggo.id }>
+          <Card>
           <Card.Img variant="top" src={doggo.image.url} />
             <Card.Body>
-              <Card.Title>{doggo.name}</Card.Title>
+              <Card.Title style = {{
+                display: 'flex',
+                'justify-content': 'space-between'
+              }}>{doggo.name}<Favourites /></Card.Title>
               <Accordion>
                 <Accordion.Item eventKey="0">
                   <Accordion.Header>See More</Accordion.Header>

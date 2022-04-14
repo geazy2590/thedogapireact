@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 import DogsContainer from './components/DogsContainer';
-
+import './App.css'
 
 const App = () => {
 

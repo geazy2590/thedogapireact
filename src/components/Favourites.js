@@ -1,36 +1,62 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 const Favourites = ({ favouriteDoggo }) => {
   const [favorites, setFavorites] = useState([]);
 
+  useEffect(() => {
+    const getFavourites = JSON.parse(
+      localStorage.getItem('favourites')
+    );
+
+    setFavorites(getFavourites);
+  }, [])
+
+  const saveToLocalStorage = (favouriteDoggos) => {
+    localStorage.setItem('favourites', JSON.stringify(favouriteDoggos));
+  }
+
   const addFavourites = ({ favouriteDoggo }) => {
-    let array = favorites;
-    let addArray = false;
+    const newFavouriteList = [...favorites, favouriteDoggo]
+    setFavorites(newFavouriteList);
+    saveToLocalStorage(newFavouriteList);
+  }
 
-    array.map((item, key) => {
-      if(item === favouriteDoggo.id) {
-        array.splice(key, 1);
-        addArray = false;
+  const removeFavourites = ({ favouriteDoggo }) => {
+    const newFavouriteList = favorites.filter(
+      (favourite) => favourite.id !== favouriteDoggo.id
+    );
+
+    setFavorites(newFavouriteList);
+    saveToLocalStorage(newFavouriteList);
+  }
+
+  const modifyFavourites = ({ favouriteDoggo }) => {
+    favorites.forEach(item => {
+      if(item.id !== favouriteDoggo.id){
+        let newFavouriteList = [ ...favorites, favouriteDoggo];
+        setFavorites(newFavouriteList);
+        saveToLocalStorage(newFavouriteList);
       }
-    });
+    })
 
-    if(addArray){
-      array.push(favouriteDoggo)
-    }
+    const newFavouriteList = favorites.filter(
+      (favourite) => favourite.id !== favouriteDoggo.id
+    );
 
-    setFavorites([ ...array])
+    setFavorites(newFavouriteList);
+    saveToLocalStorage(newFavouriteList);
   }
 
   return (
     <div>
       {favorites.includes(favouriteDoggo.id) ? (
         <i className="bi bi-heart-fill"
-          onClick = {() => addFavourites({favouriteDoggo})}
+          onClick = {() => removeFavourites({favouriteDoggo})}
           style = {{ color: 'red'}}
         />
       ) : (
         <i className="bi bi-heart"
-          onClick = {() => addFavourites({favouriteDoggo})}
+          onClick = {() => modifyFavourites({favouriteDoggo})}
           style = {{ color: 'green'}}
         />
       )}

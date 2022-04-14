@@ -9,8 +9,8 @@ const DogCard = ({ doggos }) => {
       <Row>
       {doggos.map((doggo) => (
         <Col md={4} sm={6} xs={12} key = { doggo.id }>
-          <Card>
-          <Card.Img variant="top" src={doggo.image.url} />
+          <Card className="m-2">
+          <Card.Img className = "resizeImage" variant="top" src={doggo.image.url} />
             <Card.Body>
               <Card.Title style = {{
                 display: 'flex',

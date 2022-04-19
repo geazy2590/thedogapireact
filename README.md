@@ -4,7 +4,6 @@ This react project is created using https://thedogapi.com/, react-bootstrap and 
 
 ## How to run the application
 
-- To run the application 
 - git clone https://github.com/geazy2590/thedogapireact.git into a new folder
 - cd into new folder
 - cd into thedogreactapi

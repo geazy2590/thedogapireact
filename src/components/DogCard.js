@@ -2,22 +2,26 @@ import React from 'react';
 import { Accordion, Card, Col, Container, Row } from 'react-bootstrap'
 import Favourites from './Favourites';
 
-const DogCard = ({ doggos }) => {
+const DogCard = ({ doggos, favourites, addFavourites, removeFavourites }) => {
 
   return (
-    <Container className='justify-content-md-center'>
+    <Container className='justifyContent-md-center'>
       <Row>
       {doggos.map((doggo) => (
         <Col md={4} sm={6} xs={12} key = { doggo.id }>
-          <Card className="m-2">
+          <Card className="m-2 dogCard">
           <Card.Img className = "resizeImage" variant="top" src={doggo.image.url} />
             <Card.Body>
               <Card.Title style = {{
                 display: 'flex',
-                'justify-content': 'space-between'
+                'justifyContent': 'space-between'
               }}>
                 {doggo.name}
-                <Favourites favouriteDoggo = { doggo }/>
+              <Favourites favouriteDoggo = { doggo }
+               favourites= { favourites }
+               addFavourites = { addFavourites }
+               removeFavourites = { removeFavourites }
+               />
               </Card.Title>
               <Accordion>
                 <Accordion.Item eventKey="0">

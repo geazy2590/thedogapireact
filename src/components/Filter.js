@@ -1,23 +1,17 @@
 import React from 'react';
-import {Col, Container, Dropdown } from 'react-bootstrap';
+import { Button, Col, Container } from 'react-bootstrap';
 
 const Filter = ({ breedGroups, filterBreeds }) => {
 
   return (
-    <Container>
-      <Col className="d-flex justify-content-center">
-        <Dropdown>
-          <Dropdown.Toggle variant="success" id="dropdown-basic">
-            Dropdown Button
-          </Dropdown.Toggle>
-
-          <Dropdown.Menu>
-          {breedGroups.map((eachBreed, id) => (
-            <Dropdown.Item id={ id } onClick={() => filterBreeds(eachBreed)}>{eachBreed}</Dropdown.Item>
-          ))}
-            <Dropdown.Item onClick={() => filterBreeds('All')}>Show All</Dropdown.Item>
-          </Dropdown.Menu>
-        </Dropdown>
+    <Container className="filterContainer">
+      <h5> Filter dogs by breed</h5>
+      <Col className="d-flex justifyContent-center">
+        {breedGroups.map((eachBreed, id) => {
+          return eachBreed !== '' &&
+          <Button variant="primary" className="equalButtons" key={ id } onClick={() => filterBreeds(eachBreed)}>{eachBreed || 'Unknown'}</Button>
+        })}
+        <Button variant="primary" className="equalButtons" onClick={() => filterBreeds('All')}>All</Button>
       </Col>
     </Container>
   )

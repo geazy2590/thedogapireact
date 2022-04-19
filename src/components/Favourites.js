@@ -1,6 +1,5 @@
 import React, { Fragment } from 'react';
 
-
 const Favourites = ({ favouriteDoggo, favourites, addFavourites, removeFavourites }) => {
 
   return (

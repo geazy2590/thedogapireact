@@ -4,8 +4,6 @@ import DogCard from './DogCard';
 import Filter from './Filter';
 
   const DogsContainer = () => {
-
-
     const [doggos, setDoggos] = useState([]);
     const [eachDog, setEachDog] = useState([]);
 
@@ -36,6 +34,7 @@ import Filter from './Filter';
       setEachDog(filteredData);
     };
 
+    //Favourites functionality
     const [ favourites, setfavourites ] = useState(JSON.parse(localStorage.getItem("favourites")) || []);
 
     const addFavourites = ({ favouriteDoggo }) => {

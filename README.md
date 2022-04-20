@@ -7,7 +7,6 @@ This react project is created using https://thedogapi.com/, react-bootstrap and 
 - git clone https://github.com/geazy2590/thedogapireact.git into a new folder
 - cd into new folder
 - cd into thedogreactapi
-- git checkout master
 - npm i && npm start
 - Runs the app in the development mode.\
 - Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
